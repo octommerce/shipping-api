@@ -1,0 +1,6 @@
+plugin:
+    name: 'octommerce.shippingapi::lang.plugin.name'
+    description: 'Shipping API for Octommerce'
+    author: Octommerce
+    icon: oc-icon-code
+    homepage: ''
