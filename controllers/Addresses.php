@@ -1,8 +1,7 @@
 <?php namespace Octommerce\ShippingAPI\Controllers;
 
-use Input;
 use Event;
-use Octobro\API\Controllers\ApiController;
+use Octobro\API\Classes\ApiController;
 use Octommerce\Shipping\Models\Address;
 use Octommerce\ShippingAPI\Transformers\AddressTransformer;
 
@@ -25,7 +24,7 @@ class Addresses extends ApiController
 
     public function store()
     {
-        $address          = Address::make(Input::get());
+        $address          = Address::make($this->data);
         $address->user_id = $this->user->id;
         $address->save();
 

@@ -1,14 +1,10 @@
 <?php namespace Octommerce\ShippingAPI\Transformers;
 
-use League\Fractal\TransformerAbstract;
+use Octobro\API\Classes\Transformer;
 use Octommerce\Shipping\Models\Address;
 
-class AddressTransformer extends TransformerAbstract
+class AddressTransformer extends Transformer
 {
-    protected $defaultIncludes = [];
-
-    protected $availableIncludes = [];
-
     public function transform(Address $address)
     {
         return [
