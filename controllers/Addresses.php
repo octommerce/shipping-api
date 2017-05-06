@@ -1,6 +1,5 @@
 <?php namespace Octommerce\ShippingAPI\Controllers;
 
-use Event;
 use Octobro\API\Classes\ApiController;
 use Octommerce\Shipping\Models\Address;
 use Octommerce\ShippingAPI\Transformers\AddressTransformer;

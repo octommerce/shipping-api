@@ -5,7 +5,7 @@ use Octommerce\Shipping\Models\Address;
 
 class AddressTransformer extends Transformer
 {
-    public function transform(Address $address)
+    public function data(Address $address)
     {
         return [
             'id'            => (int) $address->id,
