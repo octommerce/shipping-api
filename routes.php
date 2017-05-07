@@ -6,11 +6,16 @@
         'middleware' => 'cors'
         ], function() {
 
-            Route::group(['prefix' => 'shipping', 'middleware' => 'oauth'], function() {
-                Route::get('addresses', 'Addresses@index');
-                Route::post('addresses', 'Addresses@store');
-                Route::put('addresses', 'Addresses@update');
-                Route::delete('addresses', 'Addresses@destroy');
+            Route::group(['middleware' => 'oauth'], function() {
+                Route::put('cart/shipping', 'Cart@updateShipping');
+
+                Route::group(['prefix' => 'shipping'], function() {
+
+                    Route::get('addresses', 'Addresses@index');
+                    Route::post('addresses', 'Addresses@store');
+                    Route::put('addresses', 'Addresses@update');
+                    Route::delete('addresses', 'Addresses@destroy');
+                });
             });
     });
 

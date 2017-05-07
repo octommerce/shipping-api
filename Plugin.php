@@ -2,6 +2,7 @@
 
 use System\Classes\PluginBase;
 use RainLab\User\Models\User;
+use Octommerce\Octommerce\Models\Cart;
 use Octobro\API\Transformers\UserTransformer;
 use Octommerce\API\Transformers\CartTransformer;
 use Octommerce\ShippingAPI\Transformers\AddressTransformer;
@@ -21,7 +22,11 @@ class Plugin extends PluginBase
     public function boot()
     {
     	CartTransformer::extend(function($transformer) {
-            $transformer->addFields(['shipping_cost', 'shipping_courier', 'shipping_service']);
+            $transformer->addField('shipping_cost', function(Cart $cart) {
+                return (int) $cart->shipping_cost;
+            });
+
+            $transformer->addFields(['shipping_courier', 'shipping_service']);
     	});
 
         UserTransformer::extend(function($transformer) {
