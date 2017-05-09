@@ -29,4 +29,9 @@ class Addresses extends ApiController
 
         return $this->respondwithItem($address, new AddressTransformer);
     }
+
+    public function destroy($id)
+    {
+        $this->user->addresses()->whereId($id)->delete();
+    }
 }

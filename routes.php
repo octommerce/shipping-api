@@ -13,8 +13,9 @@
 
                     Route::get('addresses', 'Addresses@index');
                     Route::post('addresses', 'Addresses@store');
-                    Route::put('addresses', 'Addresses@update');
-                    Route::delete('addresses', 'Addresses@destroy');
+                    Route::get('addresses/{id}', 'Addresses@show');
+                    Route::put('addresses/{id}', 'Addresses@update');
+                    Route::delete('addresses/{id}', 'Addresses@destroy');
                 });
             });
     });
