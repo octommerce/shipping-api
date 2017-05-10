@@ -37,7 +37,6 @@ class Plugin extends PluginBase
             });
 
             $transformer->addFields(['shipping_courier', 'shipping_service']);
-            });
     	});
 
         UserTransformer::extend(function($transformer) {
