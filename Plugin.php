@@ -36,7 +36,22 @@ class Plugin extends PluginBase
                 return (float) $order->shipping_cost;
             });
 
-            $transformer->addFields(['shipping_courier', 'shipping_service']);
+			$transformer->addField('is_cod', function(Order $order) {
+                return (Boolean) $order->is_cod;
+            });
+
+			$transformer->addField('shipping_latitude', function(Order $order) {
+                return (float) $order->shipping_latitude;
+            });
+
+			$transformer->addField('shipping_longitude', function(Order $order) {
+                return (float) $order->shipping_longitude;
+            });
+
+            $transformer->addFields([
+				'shipping_courier',
+				'shipping_service',
+			]);
     	});
 
         UserTransformer::extend(function($transformer) {
