@@ -14,21 +14,7 @@ class Cart extends ApiController
     {
         $cart = CartHelper::get();
 
-        $courierManager = CourierManager::instance();
-
-        $courier = $courierManager->findByAlias($this->input->get('courier'), true);
-
-        if (!$courier) {
-            throw new ApplicationException('Courier \'' . $this->input->get('courier') . '\' not found.');
-        }
-
-        $shippingData = [
-            'cost'    => $courier->getShippingCost($this->data, $cart),
-            'courier' => $this->input->get('courier'),
-            'service' => $this->input->get('service')
-        ];
-
-        $cart->addShippingCost($shippingData);
+        $cart->setShipping($this->input->get('courier'), $this->input->get('service'), $this->data);
 
         return $this->respondWithItem($cart, new CartTransformer);
     }
