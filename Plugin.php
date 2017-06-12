@@ -52,6 +52,12 @@ class Plugin extends PluginBase
 				'shipping_courier',
 				'shipping_service',
 			]);
+
+			$transformer->addInclude('shipping_address', function(Order $order) use ($transformer) {
+				if ($order->shipping_address()->count()) {
+					return $transformer->item($order->shipping_address()->first(), new AddressTransformer);
+				}
+			});
     	});
 
         UserTransformer::extend(function($transformer) {
