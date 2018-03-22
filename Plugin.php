@@ -4,7 +4,7 @@ use System\Classes\PluginBase;
 use RainLab\User\Models\User;
 use Octommerce\Octommerce\Models\Cart;
 use Octommerce\Octommerce\Models\Order;
-use Octobro\API\Transformers\UserTransformer;
+use Octobro\OAuth2\Transformers\UserTransformer;
 use Octommerce\API\Transformers\CartTransformer;
 use Octommerce\API\Transformers\OrderTransformer;
 use Octommerce\ShippingAPI\Transformers\AddressTransformer;
