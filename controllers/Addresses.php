@@ -9,14 +9,14 @@ class Addresses extends ApiController
 
     public function index()
     {
-        $addresses = $this->user->addresses;
+        $addresses = $this->getUser()->addresses;
 
         return $this->respondwithCollection($addresses, new AddressTransformer);
     }
 
     public function show($id)
     {
-    	$address = $this->user->addresses()->whereId($id)->first();
+    	$address = $this->getUser()->addresses()->whereId($id)->first();
 
     	return $this->respondwithItem($address, new AddressTransformer);
     }
@@ -24,7 +24,7 @@ class Addresses extends ApiController
     public function store()
     {
         $address          = Address::make($this->data);
-        $address->user_id = $this->user->id;
+        $address->user_id = $this->getUser()->id;
         $address->save();
 
         return $this->respondwithItem($address, new AddressTransformer);
@@ -32,6 +32,6 @@ class Addresses extends ApiController
 
     public function destroy($id)
     {
-        $this->user->addresses()->whereId($id)->delete();
+        $this->getUser()->addresses()->whereId($id)->delete();
     }
 }
